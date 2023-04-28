@@ -3,6 +3,7 @@ from PIL import Image,ImageTk
 from tkinter import messagebox
 from funkcijas import *
 
+
 GARUMS=370
 PLATUMS=500
 logs=Tk()
@@ -44,6 +45,7 @@ def skolas_limenis():
   skola3.pack_forget()
   skolas.pack_forget()
   paper3.pack(pady=370,padx=600)
+  label.pack()
 skolas= Label(menu, text= "Skola", font= ('Helvetica 17 bold'))
 skola=ImageTk.PhotoImage(file="skolaklase.png")
 skola2=Label(image=skola)
@@ -62,15 +64,14 @@ paper2=Label(image=paper)
 paper3=Button(klase,image=paper,command=papirs,borderwidth=0)
 paper3.pack_forget()
 
-#NEJIETTTTTTTTTTTT
-# def atgrieztis():
-#   klase.pack_forget()
-#   label.pack_forget()
-#   menu.pack()
-#   skola3.pack(pady=20,padx=20)
-#   skolas.pack()
-#   dato3.pack(pady=20,padx=20,)
-# label=Button(klase,text='Start',command=atgrieztis).pack(side=BOTTOM)
+
+def atgrieztis():
+  klase.pack_forget()
+  menu.pack()
+  skola3.pack(pady=20,padx=20)
+  skolas.pack()
+  dato3.pack(pady=20,padx=20,)
+label=Button(klase,text='Start',command=atgrieztis)
 
 #datorklases poga
 GARUMS3=350
@@ -91,3 +92,19 @@ dator.create_image(0,0,anchor=NW,image=bg4)
 
 
 
+wqfgxcqwlcvyjhcv2lcvi2evc
+Wdc
+wedcwecwec
+we
+cwec
+wec
+wecw
+ecw
+c
+wc
+wc
+w
+cw
+cw
+c
+wc
