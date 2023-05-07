@@ -40,9 +40,9 @@ menu.create_image(0,0,anchor=NW,image=bg2)
 
 #klases poga
 def skolas_limenis():
-  pudele3.pack(pady=200,padx=580)
-  paper3.pack(pady=370,padx=600)
-  gruzi3.pack(pady=350,padx=200)  #Normāli nejievieto, nodzēšs labo malu
+  pudele3.place(x=480, y=100)
+  paper3.place(x=300, y=270)
+  gruzi3.place(x=350,y=200)  #Normāli nejievieto, nodzēšs labo malu
   
   info.pack_forget()
   menu.pack_forget()
@@ -64,38 +64,53 @@ klase.pack_forget()
 bg3= ImageTk.PhotoImage(file="skola.jpg")
 klase.create_image(0,0,anchor=NW,image=bg3)
 punkti_skola=0
+
+def līmeņa_beigas():
+  klase.create_text(100,100,text='SPĒLES BEIGAS',fill='white',font=('Helvetica',30))
+  klase.create_text(100,100+30,text='Rezultāts:' + str(punkti_skola),fill='white')
+  
 def papirs():
-  paper3.pack_forget()
+  paper3.destroy()
   global punkti_skola  
   punkti_skola+= 1 
   print (punkti_skola) 
-paper=ImageTk.PhotoImage(file="paper.png")
-paper2=Label(image=paper)
-paper3=Button(klase,image=paper,command=papirs,borderwidth=0)
+  if punkti_skola == 2:
+    līmeņa_beigas()
+# paper=ImageTk.PhotoImage(file="paper.png")
+# paper2=Label(image=paper)
+# paper3=Button(klase,image=paper,command=papirs,borderwidth=0)
 
 
 
 def pudeles():
-  pudele3.pack_forget()
+  pudele3.destroy()
   global punkti_skola  
   punkti_skola+= 1 
   print (punkti_skola) 
-pudele=ImageTk.PhotoImage(file="pudele.png")
-pudele2=Label(image=pudele)
-pudele3=Button(klase,image=pudele,command=pudeles,borderwidth=0)
-
+  if punkti_skola == 2:
+    līmeņa_beigas()
+# pudele=ImageTk.PhotoImage(file="pudele.png")
+# pudele2=Label(image=pudele)
+# pudele3=Button(klase,image=pudele,command=pudeles,borderwidth=0)
 
 def gruzis():
-  gruzi3.pack_forget()
+  gruzi3.destroy()
   global punkti_skola  
   punkti_skola+= 1 
+  if punkti_skola == 2:
+    līmeņa_beigas()
   print (punkti_skola) 
 gruzi=ImageTk.PhotoImage(file="gruzi.png")
 gruzi2=Label(image=gruzi)
 gruzi3=Button(klase,image=gruzi,command=gruzis,borderwidth=0)
 
+paper=ImageTk.PhotoImage(file="paper.png")
+paper2=Label(image=paper)
+paper3=Button(klase,image=paper,command=papirs,borderwidth=0)
 
-
+pudele=ImageTk.PhotoImage(file="pudele.png")
+pudele2=Label(image=pudele)
+pudele3=Button(klase,image=pudele,command=pudeles,borderwidth=0)
 
 
 # #datorklases poga
