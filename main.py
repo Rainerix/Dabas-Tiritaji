@@ -409,7 +409,9 @@ def limenisnr5():
   kojas3.pack_forget()
   kojaslimenis.pack()
   cigarete3.place(x=450,y=220)
-  
+  veips3.place(x=200, y=150)
+  vemeklis3.place(x=380,y=160)
+  snuss3.place(x=240,y=320)
 
   
 limenitis5= Label(menu, text= "5.Līmenis VTkojas", font= ('Helvetica 17 bold'))
@@ -431,8 +433,57 @@ def cigarins():
   global punkti_kojas  
   punkti_kojas+= 1 
   if punkti_kojas == 4:
-    līmeņa4_beigas()
+    līmeņa5_beigas()
   print (punkti_kojas) 
 cigarete=ImageTk.PhotoImage(file="cigarete.png")
 cigarete2=Label(image=cigarete)
 cigarete3=Button(kojaslimenis,image=cigarete,command=cigarins,borderwidth=0)
+
+
+def veipinss():
+  veips3.destroy()
+  global punkti_kojas  
+  punkti_kojas+= 1 
+  if punkti_kojas == 4:
+    līmeņa5_beigas()
+  print (punkti_kojas) 
+veips=ImageTk.PhotoImage(file="veips.png")
+veips2=Label(image=veips)
+veips3=Button(kojaslimenis,image=veips,command=veipinss,borderwidth=0)
+
+def vemeklitis():
+  vemeklis3.destroy()
+  global punkti_kojas  
+  punkti_kojas+= 1 
+  if punkti_kojas == 4:
+    līmeņa5_beigas()
+  print (punkti_kojas) 
+vemeklis=ImageTk.PhotoImage(file="vemeklis.png")
+vemeklis2=Label(image=vemeklis)
+vemeklis3=Button(kojaslimenis,image=vemeklis,command=vemeklitis,borderwidth=0)
+
+def snusins():
+  snuss3.destroy()
+  global punkti_kojas  
+  punkti_kojas+= 1 
+  if punkti_kojas == 4:
+    līmeņa5_beigas()
+  print (punkti_kojas) 
+snuss=ImageTk.PhotoImage(file="snuss.png")
+snuss2=Label(image=snuss)
+snuss3=Button(kojaslimenis,image=snuss,command=snusins,borderwidth=0)
+
+
+def līmeņa5_beigas():
+  kojaslimenis.create_text(270,160,text='Līmenis pabeigts!',fill='#A8FF4C',font=('Helvetica 30 bold'))
+  level6= Button(kojaslimenis, text ="Doties tālāk",command=limenisnr6atpakal,bg='#A8FF4C')
+  level6.place(x=210,y=200)
+
+
+def limenisnr6atpakal():
+  menu.pack()
+  kojas3.pack_forget()
+  kojaslimenis.pack_forget()
+  limenitis5.pack_forget()
+  menu.create_text(1,10,text='Paldies ka spēlēji!',fill='#A8FF4C',font=('Helvetica 30 bold'))
+  
