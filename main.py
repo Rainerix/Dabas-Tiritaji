@@ -4,11 +4,10 @@ from tkinter import messagebox
 from time import sleep, time
 
 GARUMS=370
-PLATUMS=500
+PLATUMS=497
 GARUMS3=350
 logs=Tk()
 logs.title('Vides saudzetajs')
-
 #sakuma canva
 start=Canvas(logs,width=PLATUMS,height=GARUMS,bg='darkblue')
 start.pack()
@@ -34,7 +33,7 @@ start.tag_bind(label, '<Button-1>', lambda event: talak())
 
 #otra Canva
 GARUMS2=335
-menu=Canvas(logs,width=PLATUMS,height=GARUMS2,bg='darkblue')
+menu=Canvas(logs,width=PLATUMS,height=GARUMS,bg='darkblue')
 menu.pack_forget()
 bg2= ImageTk.PhotoImage(file="menubilde.png")
 menu.create_image(0,0,anchor=NW,image=bg2)
@@ -229,7 +228,7 @@ lode3=Button(dator,image=lode,command=lodee,borderwidth=0)
 
 def līmeņa2_beigas():
   dator.create_text(270,160,text='SPĒLES BEIGAS',fill='#A8FF4C',font=('Helvetica 30 bold'))
-  level2= Button(dator, text ="Doties uz otro līmeni",command=limenisnr3,bg='#A8FF4C')
+  level2= Button(dator, text ="Doties uz trešo līmeni",command=limenisnr3,bg='#A8FF4C')
   level2.place(x=190,y=200)
 
 
@@ -245,18 +244,195 @@ def limenisnr3():
 
 def dabass():
   menu.pack_forget()
-  daba.pack()
   daba3.pack_forget()
+  dabalimenis.pack()
+  puppie3.place(x=430,y=270)
+  ugun3.place(x=60,y=140)
+  saslik3.place(x=10,y=310)
+  cig3.place(x=380,y=320)
 
 #trešā līmeņa menu
 limenitis3= Label(menu, text= "3.Līmenis Daba", font= ('Helvetica 17 bold'))
-daba=ImageTk.PhotoImage(file="dabamaza.png")
+daba=ImageTk.PhotoImage(file="dabamaza123.png")
 daba2=Label(image=daba)
 daba3=Button(menu, image=daba,command=dabass, borderwidth=0,bd=5)
 
 
-
+#daba
 dabalimenis=Canvas(logs,width=PLATUMS3,height=GARUMS,bg="blue")
 dabalimenis.pack_forget()
-bgdaba=ImageTk.PhotoImage(file="daba.png")
-dabalimenis.create_image(0,0,anchor=NW,image=bg3)
+bgdaba=ImageTk.PhotoImage(file="daba123.png")
+dabalimenis.create_image(0,0,anchor=NW,image=bgdaba)
+punkti_daba=0
+
+def swamppuppie():
+  puppie3.destroy()
+  global punkti_daba  
+  punkti_daba+= 1 
+  if punkti_daba == 4:
+    līmeņa3_beigas()
+  print (punkti_daba) 
+puppie=ImageTk.PhotoImage(file="swamppuppie (1).png")
+puppie2=Label(image=puppie)
+puppie3=Button(dabalimenis,image=puppie,command=swamppuppie,borderwidth=0)
+
+
+def campfire():
+  ugun3.destroy()
+  global punkti_daba  
+  punkti_daba+= 1 
+  if punkti_daba == 4:
+    līmeņa3_beigas()
+  print (punkti_daba) 
+ugun=ImageTk.PhotoImage(file="campfire.png")
+ugun2=Label(image=ugun)
+ugun3=Button(dabalimenis,image=ugun,command=campfire,borderwidth=0)
+
+def sasliks():
+  saslik3.destroy()
+  global punkti_daba  
+  punkti_daba+= 1 
+  if punkti_daba == 4:
+    līmeņa3_beigas()
+  print (punkti_daba) 
+saslik=ImageTk.PhotoImage(file="saslik.png")
+saslik2=Label(image=saslik)
+saslik3=Button(dabalimenis,image=saslik,command=sasliks,borderwidth=0)
+
+def cigarete():
+  cig3.destroy()
+  global punkti_daba  
+  punkti_daba+= 1 
+  if punkti_daba == 4:
+    līmeņa3_beigas()
+  print (punkti_daba) 
+cig=ImageTk.PhotoImage(file="cig.png")
+cig2=Label(image=cig)
+cig3=Button(dabalimenis,image=cig,command=cigarete,borderwidth=0)
+
+def līmeņa3_beigas():
+  dabalimenis.create_text(270,160,text='SPĒLES BEIGAS',fill='#A8FF4C',font=('Helvetica 30 bold'))
+  level2= Button(dabalimenis, text ="Doties uz ceturo līmeni",command=limenisnr4,bg='#A8FF4C')
+  level2.place(x=210,y=200)
+# _______________________________________________________________________________________________________________________________________________________________________________
+
+
+def limenisnr4():
+  menu.pack()
+  dabalimenis.pack_forget()
+  street3.pack()
+  limenitis3.pack_forget()
+  limenitis4.pack()
+
+def iela1():
+  menu.pack_forget()
+  iela.pack()
+  jenots3.place(x=259,y=249)
+  stikls3.place(x=50,y=239)
+  grafiti3.place(x=390,y=100)
+  siers3.place(x=550,y=190)
+  # limenitis4.pack()
+
+iela=Canvas(logs,width=PLATUMS3,height=GARUMS,bg="blue")
+iela.pack_forget()
+bgiela=ImageTk.PhotoImage(file="street.png")
+iela.create_image(0,0,anchor=NW,image=bgiela)
+punkti_iela=0
+
+limenitis4= Label(menu, text= "4.Līmenis Iela", font= ('Helvetica 17 bold'))
+street=ImageTk.PhotoImage(file="iela.png")
+street2=Label(image=street)
+street3=Button(menu, image=street,command=iela1, borderwidth=0,bd=5)
+
+
+def jenotinss():
+  jenots3.destroy()
+  global punkti_iela  
+  punkti_iela+= 1 
+  if punkti_iela == 4:
+    līmeņa4_beigas()
+  print (punkti_iela) 
+jenots=ImageTk.PhotoImage(file="jenots.png")
+jenots2=Label(image=jenots)
+jenots3=Button(iela,image=jenots,command=jenotinss,borderwidth=0)
+
+
+def stiklins():
+  stikls3.destroy()
+  global punkti_iela  
+  punkti_iela+= 1 
+  if punkti_iela == 4:
+    līmeņa4_beigas()
+  print (punkti_iela) 
+stikls=ImageTk.PhotoImage(file="stikls.png")
+stikls2=Label(image=stikls)
+stikls3=Button(iela,image=stikls,command=stiklins,borderwidth=0)
+
+def grafitiss():
+  grafiti3.destroy()
+  global punkti_iela  
+  punkti_iela+= 1 
+  if punkti_iela == 4:
+    līmeņa4_beigas()
+  print (punkti_iela) 
+grafiti=ImageTk.PhotoImage(file="grafiti.png")
+greafiti2=Label(image=grafiti)
+grafiti3=Button(iela,image=grafiti,command=grafitiss,borderwidth=0)
+
+def sierini():
+  siers3.destroy()
+  global punkti_iela  
+  punkti_iela+= 1 
+  if punkti_iela == 4:
+    līmeņa4_beigas()
+  print (punkti_iela) 
+siers=ImageTk.PhotoImage(file="siers.png")
+siers2=Label(image=siers)
+siers3=Button(iela,image=siers,command=sierini,borderwidth=0)
+
+def līmeņa4_beigas():
+  iela.create_text(270,160,text='SPĒLES BEIGAS',fill='#A8FF4C',font=('Helvetica 30 bold'))
+  level5= Button(iela, text ="Doties uz piekto līmeni",command=limenisnr5atpakal,bg='#A8FF4C')
+  level5.place(x=210,y=200)
+
+def limenisnr5atpakal():
+  menu.pack()
+  kojas3.pack()
+  limenitis5.pack()
+  iela.pack_forget()
+  limenitis4.pack_forget()
+  street3.pack_forget()
+  # ________________________________________________________________________________________________________________________________________________________________
+
+def limenisnr5():
+  menu.pack_forget()
+  kojas3.pack_forget()
+  kojaslimenis.pack()
+  cigarete3.place(x=450,y=220)
+  
+
+  
+limenitis5= Label(menu, text= "5.Līmenis VTkojas", font= ('Helvetica 17 bold'))
+kojas=ImageTk.PhotoImage(file="VT.png")
+kojas2=Label(image=kojas)
+kojas3=Button(menu, image=kojas,command=limenisnr5, borderwidth=0,bd=5)
+
+
+kojaslimenis=Canvas(logs,width=PLATUMS3,height=GARUMS,bg="blue")
+kojaslimenis.pack_forget()
+bgkojas=ImageTk.PhotoImage(file="VTliela.png")
+kojaslimenis.create_image(0,0,anchor=NW,image=bgkojas)
+
+
+punkti_kojas=0
+
+def cigarins():
+  cigarete3.destroy()
+  global punkti_kojas  
+  punkti_kojas+= 1 
+  if punkti_kojas == 4:
+    līmeņa4_beigas()
+  print (punkti_kojas) 
+cigarete=ImageTk.PhotoImage(file="cigarete.png")
+cigarete2=Label(image=cigarete)
+cigarete3=Button(kojaslimenis,image=cigarete,command=cigarins,borderwidth=0)
