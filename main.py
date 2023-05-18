@@ -2,7 +2,31 @@ from tkinter import *
 from PIL import Image,ImageTk
 from tkinter import messagebox
 from time import sleep, time
+global laiks
+laiks = 0
 
+def stopwatch_start():
+    global is_running
+    global start_time
+    if not is_running:
+        is_running = True
+        start_time = time()
+        stopwatch_update_time()
+ 
+def stopwatch_stop():
+    global is_running
+    is_running = False
+ 
+def stopwatch_update_time():
+    if is_running:
+        elapsed_time = time() - start_time
+        time_label.config(text="{:.2f}".format(elapsed_time))
+        time_label.after(50, stopwatch_update_time)
+        global laiks
+        laiks = elapsed_time
+
+
+is_running = False
 GARUMS=370
 PLATUMS=497
 GARUMS3=350
@@ -15,7 +39,7 @@ bg= ImageTk.PhotoImage(file="main_menu.png")
 start.create_image(0,0,anchor=NW,image=bg)
 start.create_text(370,150,text='Zemes tīrītāji',fill='white',font=('Helvetica', 20,'bold'))
 def noteikumi():
-   messagebox.showinfo( "Noteikumi","Laipni lūgti jautrā spēlē kuru sauc ZEMES TĪRĪTĀJI. Spēles galvenais uzdevums ir iet pa līmeņiem un savākt")
+   messagebox.showinfo( "Noteikumi","Laipni lūgti jautrā spēlē kuru sauc ZEMES TĪRĪTĀJI. Spēles galvenais uzdevums ir iet pa līmeņiem un savākt akritumus. Lai veicas!")
 #infopoga 
 info=Button(start,text ="Info", command=noteikumi, fg='black', bg='#84EE0D')
 info.place(x=12, y=330)
@@ -44,6 +68,10 @@ def skolas_limenis():
   paper3.place(x=300, y=270)
   gruzi3.place(x=350,y=200)
   kafija3.place(x=200,y=200)
+  global time_label
+  time_label = Label(klase, text="0.00", font=("Helvetica", 48))
+  time_label.place(x=0, y=0)
+  stopwatch_start()
   
   info.pack_forget()
   menu.pack_forget()
@@ -66,10 +94,15 @@ bg3= ImageTk.PhotoImage(file="skola.jpg")
 klase.create_image(0,0,anchor=NW,image=bg3)
 punkti_skola=0
 
+
 def līmeņa_beigas():
   klase.create_text(320,160,text='Līmenis pabeigts!',fill='#A8FF4C',font=('Helvetica 30 bold'))
   level2= Button(klase, text ="Doties uz otro līmeni",command=limenisnr2,bg='#A8FF4C')
   level2.place(x=250,y=200)
+  stopwatch_stop()
+  time_label.destroy()
+  print(float(laiks))
+  limenis_1_laiks = laiks
 def papirs():
   paper3.destroy()
   global punkti_skola  
@@ -77,9 +110,7 @@ def papirs():
   print (punkti_skola) 
   if punkti_skola == 4:
     līmeņa_beigas()
-# paper=ImageTk.PhotoImage(file="paper.png")
-# paper2=Label(image=paper)
-# paper3=Button(klase,image=paper,command=papirs,borderwidth=0)
+
 
 def pudeles():
   pudele3.destroy()
@@ -128,6 +159,9 @@ kafija=ImageTk.PhotoImage(file="kafijas_krūze.png")
 kafija2=Label(image=kafija)
 kafija3=Button(klase,image=kafija,command=kafijass,borderwidth=0)
 
+
+
+
 # LAIKA_IEROBEŽOJUMS=0
 # beigas=time()+LAIKA_IEROBEŽOJUMS
 # rezultāts=0
@@ -141,6 +175,10 @@ kafija3=Button(klase,image=kafija,command=kafijass,borderwidth=0)
 #   parādīt_rezultātu(rezultāts)
 #   logs.update()
 #   sleep(0.1)
+
+
+
+
 
 #_____________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
@@ -160,6 +198,10 @@ def datoris():
   burgir3.place(x=50,y=100)
   arbuz3.place(x=425,y=150)
   lode3.place(x=400,y=200)
+  global time_label
+  time_label = Label(dator, text="0.00", font=("Helvetica", 48))
+  time_label.place(x=0, y=0)
+  stopwatch_start()
   
 dato_text= Label(menu, text= "2.Limenis Datora Klase", font= ('Helvetica 17 bold'))
 dato=ImageTk.PhotoImage(file="datorklase.png")
@@ -178,7 +220,6 @@ dato3=Button(menu,image=dato,command=datoris,borderwidth=0,bd=5)
 dator=Canvas(logs,width=PLATUMS,height=GARUMS3,bg="blue")
 bg4=ImageTk.PhotoImage(file="datorklase1.jpg")
 dator.create_image(0,0,anchor=NW,image=bg4)
-
 
 punkti_datorklase=0
 def cipsis():
@@ -230,6 +271,9 @@ def līmeņa2_beigas():
   dator.create_text(270,160,text='SPĒLES BEIGAS',fill='#A8FF4C',font=('Helvetica 30 bold'))
   level2= Button(dator, text ="Doties uz trešo līmeni",command=limenisnr3,bg='#A8FF4C')
   level2.place(x=190,y=200)
+  stopwatch_stop()
+  print(float(laiks))
+  limenis_2_laiks = laiks
 
 
 # #__________________________________________________________________________________________________________________________________________________________________________

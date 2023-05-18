@@ -15,8 +15,8 @@
 # bg= ImageTk.PhotoImage(file="main_menu.png")
 # start.create_image(0,0,anchor=NW,image=bg)
 # start.create_text(370,150,text='Zemes tīrītāji',fill='white',font=('Helvetica', 20,'bold'))
-# def noteikumi():
-#    messagebox.showinfo( "Noteikumi","Laipni lūgti jautrā spēlē kuru sauc ZEMES TĪRĪTĀJI. Spēles galvenais uzdevums ir iet pa līmeņiem un savākt")
+def noteikumi():
+    messagebox.showinfo( "Noteikumi","Laipni lūgti jautrā spēlē kuru sauc ZEMES TĪRĪTĀJI. Spēles galvenais uzdevums ir iet pa līmeņiem un savākt")
 # #infopoga 
 # info=Button(start,text ="Info", command=noteikumi, fg='black', bg='#84EE0D')
 # info.place(x=12, y=330)
